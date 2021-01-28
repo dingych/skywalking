@@ -42,7 +42,6 @@ public abstract class AbstractLogRecord extends Record {
     public static final String TRACE_ID = "trace_id";
     public static final String TRACE_SEGMENT_ID = "trace_segment_id";
     public static final String SPAN_ID = "span_id";
-    public static final String IS_ERROR = "is_error";
     public static final String CONTENT_TYPE = "content_type";
     public static final String CONTENT = "content";
     public static final String TAGS_RAW_DATA = "tags_raw_data";
@@ -77,10 +76,6 @@ public abstract class AbstractLogRecord extends Record {
     @Getter
     @Column(columnName = SPAN_ID)
     private int spanId;
-    @Setter
-    @Getter
-    @Column(columnName = IS_ERROR)
-    private int isError;
     @Setter
     @Getter
     @Column(columnName = CONTENT_TYPE, storageOnly = true)

@@ -37,12 +37,10 @@ import org.apache.skywalking.oap.server.core.query.enumeration.Order;
 import org.apache.skywalking.oap.server.core.query.input.TraceScopeCondition;
 import org.apache.skywalking.oap.server.core.query.type.ContentType;
 import org.apache.skywalking.oap.server.core.query.type.Log;
-import org.apache.skywalking.oap.server.core.query.type.LogState;
 import org.apache.skywalking.oap.server.core.query.type.Logs;
 import org.apache.skywalking.oap.server.core.storage.query.ILogQueryDAO;
 import org.apache.skywalking.oap.server.library.client.jdbc.hikaricp.JDBCHikariCPClient;
 import org.apache.skywalking.oap.server.library.module.ModuleManager;
-import org.apache.skywalking.oap.server.library.util.BooleanUtils;
 import org.apache.skywalking.oap.server.library.util.CollectionUtils;
 import org.elasticsearch.search.sort.SortOrder;
 
@@ -82,7 +80,6 @@ public class H2LogQueryDAO implements ILogQueryDAO {
                           String endpointId,
                           String endpointName,
                           TraceScopeCondition relatedTrace,
-                          LogState state,
                           Order queryOrder,
                           int from,
                           int limit,
@@ -141,14 +138,6 @@ public class H2LogQueryDAO implements ILogQueryDAO {
                 sql.append(" and ").append(SPAN_ID).append(" = ?");
                 parameters.add(relatedTrace.getSpanId());
             }
-        }
-
-        if (LogState.ERROR.equals(state)) {
-            sql.append(" and ").append(AbstractLogRecord.IS_ERROR).append(" = ?");
-            parameters.add(BooleanUtils.booleanToValue(true));
-        } else if (LogState.SUCCESS.equals(state)) {
-            sql.append(" and ").append(AbstractLogRecord.IS_ERROR).append(" = ?");
-            parameters.add(BooleanUtils.booleanToValue(false));
         }
 
         if (CollectionUtils.isNotEmpty(tags)) {
