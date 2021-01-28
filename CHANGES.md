@@ -70,6 +70,7 @@ Release Notes.
 * Fix bug endpoint name grouping not work due to setting service name and endpoint name out of order.
 * Fix receiver analysis error count metrics.
 * Log collecting and query implementation.
+* Logging plugins also collect stacktrace in error logs.
 * Support Alarm to feishu.
 * Add the implementation of ConfigurationDiscovery on the OAP side.
 * Fix bug in `parseInternalErrorCode` where some error codes are never reached.
@@ -79,6 +80,7 @@ Release Notes.
 * Add the text analyzer for querying log in the es storage.
 * Chore:  Remove duplicate codes in Envoy ALS handler.
 * Remove the strict rule of OAL disable statement parameter.
+* Remove unused log query parameters.
 
 #### UI
 * Fix un-removed tags in trace query.

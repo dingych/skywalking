@@ -51,7 +51,6 @@ import static org.apache.skywalking.oap.server.core.analysis.manual.log.Abstract
 import static org.apache.skywalking.oap.server.core.analysis.manual.log.AbstractLogRecord.CONTENT_TYPE;
 import static org.apache.skywalking.oap.server.core.analysis.manual.log.AbstractLogRecord.ENDPOINT_ID;
 import static org.apache.skywalking.oap.server.core.analysis.manual.log.AbstractLogRecord.ENDPOINT_NAME;
-import static org.apache.skywalking.oap.server.core.analysis.manual.log.AbstractLogRecord.IS_ERROR;
 import static org.apache.skywalking.oap.server.core.analysis.manual.log.AbstractLogRecord.SERVICE_ID;
 import static org.apache.skywalking.oap.server.core.analysis.manual.log.AbstractLogRecord.SERVICE_INSTANCE_ID;
 import static org.apache.skywalking.oap.server.core.analysis.manual.log.AbstractLogRecord.SPAN_ID;
@@ -199,7 +198,6 @@ public class H2LogQueryDAO implements ILogQueryDAO {
                     log.setEndpointName(resultSet.getString(ENDPOINT_NAME));
                     log.setTraceId(resultSet.getString(TRACE_ID));
                     log.setTimestamp(resultSet.getString(TIMESTAMP));
-                    log.setError(BooleanUtils.valueToBoolean(resultSet.getInt(IS_ERROR)));
                     log.setContentType(ContentType.instanceOf(resultSet.getInt(CONTENT_TYPE)));
                     log.setContent(resultSet.getString(CONTENT));
                     String dataBinaryBase64 = resultSet.getString(TAGS_RAW_DATA);

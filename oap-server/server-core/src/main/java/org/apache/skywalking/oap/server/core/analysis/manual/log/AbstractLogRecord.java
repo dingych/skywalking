@@ -129,7 +129,6 @@ public abstract class AbstractLogRecord extends Record {
             map.put(TRACE_ID, record.getTraceId());
             map.put(TRACE_SEGMENT_ID, record.getTraceSegmentId());
             map.put(SPAN_ID, record.getSpanId());
-            map.put(IS_ERROR, record.getIsError());
             map.put(TIME_BUCKET, record.getTimeBucket());
             map.put(CONTENT_TYPE, record.getContentType());
             map.put(CONTENT, record.getContent());
@@ -150,7 +149,6 @@ public abstract class AbstractLogRecord extends Record {
             record.setTraceId((String) dbMap.get(TRACE_ID));
             record.setTraceSegmentId((String) dbMap.get(TRACE_SEGMENT_ID));
             record.setSpanId(((Number) dbMap.get(SPAN_ID)).intValue());
-            record.setIsError(((Number) dbMap.get(IS_ERROR)).intValue());
             record.setContentType(((Number) dbMap.get(CONTENT_TYPE)).intValue());
             record.setContent((String) dbMap.get(CONTENT));
             record.setTimestamp(((Number) dbMap.get(TIMESTAMP)).longValue());

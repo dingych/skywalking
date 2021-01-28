@@ -34,7 +34,6 @@ import org.apache.skywalking.oap.server.core.query.type.LogState;
 import org.apache.skywalking.oap.server.core.query.type.Logs;
 import org.apache.skywalking.oap.server.core.storage.query.ILogQueryDAO;
 import org.apache.skywalking.oap.server.core.storage.type.StorageDataComplexObject;
-import org.apache.skywalking.oap.server.library.util.BooleanUtils;
 import org.apache.skywalking.oap.server.library.util.CollectionUtils;
 import org.apache.skywalking.oap.server.storage.plugin.influxdb.InfluxClient;
 import org.apache.skywalking.oap.server.storage.plugin.influxdb.InfluxConstants;
@@ -182,7 +181,6 @@ public class LogQuery implements ILogQueryDAO {
                 log.setEndpointName((String) data.get(ENDPOINT_NAME));
                 log.setTraceId((String) data.get(TRACE_ID));
                 log.setTimestamp(data.get(TIMESTAMP).toString());
-                log.setError(BooleanUtils.valueToBoolean(((Number) data.get(IS_ERROR)).intValue()));
                 log.setContentType(
                     ContentType.instanceOf(((Number) data.get(AbstractLogRecord.CONTENT_TYPE)).intValue()));
                 log.setContent((String) data.get(AbstractLogRecord.CONTENT));
